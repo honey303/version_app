@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  backend:
+    build: .
+    command: python app.py
+    ports:
+      - "80:80"
+    restart: always
+
