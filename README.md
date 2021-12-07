@@ -1,4 +1,12 @@
-# Find the individual readme files within the directories
+# Find the README.md files to run the app within *app* folder & for setting up the infrastructure within *tf-scripts*
+
+
+## Testing the app locally
+
+* Please update the python version in the *app/Dockerfile* by modifying the value of *FROM* attritubte to a different version. *For eg:* *python:3.9*
+* Follow the steps to the run and app locally (app/README.md)
+* View the changes at *http://localhost/version*
+
 
 ## Deployments
 
