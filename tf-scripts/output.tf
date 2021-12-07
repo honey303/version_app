@@ -3,7 +3,7 @@
 #------------------------------------------------------------------------------
 output "aws_lb_arn" {
   description = "The ARN of the LB"
-  value       = aws_lb.poc_lb.arn
+  value       = aws_lb.app_lb.arn
 }
 
 output "aws_lb_target_group_arn" {

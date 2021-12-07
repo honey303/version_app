@@ -4,8 +4,8 @@ provider "aws" {
 }
 
 # ALB
-resource "aws_lb" "poc_lb" {
-  name               = "poc-lb"
+resource "aws_lb" "app_lb" {
+  name               = "app-lb"
   internal           = false
   load_balancer_type = "application"
   security_groups    = var.security_groups
@@ -20,7 +20,7 @@ resource "aws_lb" "poc_lb" {
 
 # ALB Target Group
 resource "aws_lb_target_group" "ip_tg" {
-  name        = "poc-lb-tg"
+  name        = "app-lb-tg"
   port        = 80
   protocol    = "HTTP"
   target_type = "ip"
@@ -29,7 +29,7 @@ resource "aws_lb_target_group" "ip_tg" {
 
 # ALB Listener
 resource "aws_lb_listener" "sample_app" {
-  load_balancer_arn = aws_lb.poc_lb.arn
+  load_balancer_arn = aws_lb.app_lb.arn
   port              = "80"
   protocol          = "HTTP"
 
@@ -42,7 +42,7 @@ resource "aws_lb_listener" "sample_app" {
 
 # ECS Execution role
 resource "aws_iam_role" "role" {
-  name = "poc-ecs-role"
+  name = "app-ecs-role"
 
   assume_role_policy = <<EOF
 {
@@ -97,12 +97,12 @@ resource "aws_ecs_task_definition" "service" {
 
 # ECS Cluster
 resource "aws_ecs_cluster" "cluster" {
-  name = "poc-ecs-cluster"
+  name = "app-ecs-cluster"
 }
 
 # AWS ECS Service
 resource "aws_ecs_service" "svc" {
-  name            = "poc-svc"
+  name            = "app-svc"
   cluster         = aws_ecs_cluster.cluster.id
   task_definition = aws_ecs_task_definition.service.arn
   desired_count   = 1

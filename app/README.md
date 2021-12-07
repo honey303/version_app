@@ -1,4 +1,4 @@
-# The PoC Application #
+# The Application #
 
 This is sample python app that exposes /version endpoint to display the python version.
 
