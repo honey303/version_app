@@ -23,21 +23,21 @@ sh ecr.sh
 
 ```
 
-### Get all the task definitions
+Get all the task definitions
 
 aws ecs describe-task-definition — task-definition ${task-definition-name} — region=${aws-region}"
 
-### Update the task definition with the new image
+Update the task definition with the new image
 
 echo ${TASK_DEFINITION} | jq ‘.containerDefinitions[0].image=’\”${NEW_ECR_IMAGE }\” \ > <task-defintion file>
 
-### Register the task definition
+Register the task definition
 
 aws ecs register-task-definition — family ${task-definition-name} — region=${aws-region} — cli-input-json <task-definition file path>
 
-### Update the AWS Service with the new task definition which would automatically trigger a rolling deployment
+Update the AWS Service with the new task definition which would automatically trigger a rolling deployment
 
-aws ecs update-service --service <service-name> --task-definition <task-defintion>
+aws ecs update-service --service <service-name> --task-definition <new-task-defintion>
 
 ```
 
