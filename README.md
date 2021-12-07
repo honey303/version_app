@@ -1,4 +1,4 @@
-# Find the README.md files to run the app within *app* folder & for setting up the infrastructure within *tf-scripts*
+## Find the README.md files to run the app within *app* folder & for setting up the infrastructure within *tf-scripts*
 
 
 ## Testing the app locally
